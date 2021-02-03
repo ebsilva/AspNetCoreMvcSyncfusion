@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SqlQuery_1.sql" />
+    <None Remove="SqlQuery_2.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Imagens\" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jQuery.UI" Version="1.12.1.1" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="18.4.0.39" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+</Project>

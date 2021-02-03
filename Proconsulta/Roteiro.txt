@@ -1,0 +1,24 @@
+Criar Projeto MVC C# | JQUERY | CSS | SQL SERVER
+
+ 
+
+Banco de Dados SQL Server
+DataBase “dbteste”.
+Criar tabela Cliente(ClienteId, Cliente, TipoCliente, NomeContato, TelefoneContato,  Cidade, Bairro, Logradouro, DataCadastro, DataAtualizacao) *salvando script SQL do mesmo.
+Gerar 5.000,00 registro na tabela Imoveis *salvando script SQL do mesmo.
+Ex:
+
+Obs: Na criação da tabela Cliente não consta um campo decimal (’850000,00’)
+
+Cliente (’Teste1’,’TipoCliente1’,’1111-1111’,’850000,00’,’Cidade1’,’Bairro1’,’Rua Teste1’,’10/03/2015’,’13/04/2015’)
+Cliente (’Teste2’, TipoCliente2,’2222-2222’,’850000,00’,’Cidade2’,’Bairro2’,’Rua Teste2’,’10/03/2015’,’13/04/2015’)
+
+
+Criar Procedures (Consulta, Insert, Update, Delete) *salvando script SQL do mesmo.
+ 
+
+ 
+
+Projeto MVC: Em Camadas com MVC C# + CSS + JQUERY
+Criar tela de Gerenciamento de dados: Cadastro(via Modal), Consulta em Grid, Edição(via Modal), Exclusão e Paginação via SQL(apenas botão próximo e anterior).
+Criar filtro para campo “NomeContato” em JQUERY utilizando o autocomplete quando ao selecionar o mesmo filtrar na Grid.

@@ -1,0 +1,311 @@
+﻿@page "/Clientes"
+@model ClientesModel
+@{
+    ViewData["Title"] = "Home page";
+
+    List<object> ContextMenuitems = new List<object>();
+    ContextMenuitems.Add(new { text = "Alterar", target = ".e-content", id = "alterar"  });
+    ContextMenuitems.Add(new { text = "Excluir", target = ".e-content", id = "excluir" });
+    ContextMenuitems.Add(new { text = "Endereço", target = ".e-content", id = "endereco" });
+
+}
+
+<ejs-grid id="Grid"
+          dataSource="@Model.Clientes"
+          allowPaging="true"
+          allowSorting="true"
+          allowSelection="true"
+          allowFiltering="true"
+          enableImmutableMode="false"
+          enableVirtualization="false"
+          height="430"
+          locale="pt"
+          contextMenuItems="ContextMenuitems" contextMenuClick="contextMenuClick">
+    <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+    <e-grid-filtersettings type="Menu"> </e-grid-filtersettings>
+    <e-grid-selectionsettings persistSelection="true" type="Multiple" checkboxOnly="true"></e-grid-selectionsettings>
+    <e-grid-columns>
+        <e-grid-column field="Id" isPrimaryKey="true" headerText="Id" textAlign="Right" width="100"></e-grid-column>
+        <e-grid-column field="NomeCliente" headerText="Nome" width="200"></e-grid-column>
+        <e-grid-column field="TipoCliente" headerText="Tipo" width="100" textAlign="Center"></e-grid-column>
+        <e-grid-column field="NomeContato" headerText="Fone" f width="120"></e-grid-column>
+        <e-grid-column field="DataCadastro" headerText="Cadastro em" format='dd/MM/y' width="120"></e-grid-column>
+        <e-grid-column field="DataAtualizacao" headerText="Atualizado em" format='dd/MM/y' width="120"></e-grid-column>
+
+        <e-grid-column field="Ativo" headerText="Status" displayAsCheckBox="true" width="120"></e-grid-column>
+    </e-grid-columns>
+</ejs-grid>
+<script type="text/x-jsrender" id="tipoTemplate">
+    <div>
+        <div class="empimg">  <span class="e-userimg"></span>  </div>
+        <span id="cattext">${Tipo}</span>
+    </div>
+
+</script>
+<script id="datetemplate" type="text/x-template">
+    <span class="e-icon-calendar e-icons headericon"></span> Tipo
+</script>
+<script>
+    function contextMenuClick(args) {
+        let cliente = args.rowInfo.rowData
+        if (args.item.id === 'alterar') {
+            DataToForm(cliente);
+            
+            $("#ClienteModal").modal('show');
+        }
+        if (args.item.id === 'excluir') {
+            $("#clienteId").html(cliente.Id)
+            $("#ExclueModal").modal('show');
+        }
+        if (args.item.id === 'endereco') { }
+    }
+</script>
+<!---Cliente Modal serve para incluir e alterar -->
+<div class="modal fade " id="ClienteModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ClienteModalTitle">Novo Cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div>
+                        <form>
+                            <div id="clienteId" class="hidden"></div>
+                            <div class="row p-2">
+                                <div style="width:70%">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" class="form-control" value="" id="nome" placeholder="Nome do cliente">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo">Tipo</label>
+                                    <input type="text" class="form-control" value="" id="tipo" placeholder="Tipo do cliente">
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <div class="form-group" style="width:70%">
+                                    <label for="contato">Contato</label>
+                                    <input type="text" class="form-control" value="" id="contato" placeholder="Nome do contato">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fone">Fone</label>
+                                    <input type="text" class="form-control" value="" id="fone" placeholder="Fone  do contato">
+                                </div>
+                            </div>
+
+                            <div class="row p-2">
+                                <div class="form-group" style="width:90%">
+                                    <label for="rua">Logradouro</label>
+                                    <input type="text" class="form-control" value="" id="rua" placeholder="Nome do contato">
+                                </div>
+
+                            </div>
+                            <div class="row p-2">
+                                <div class="form-group" style="width:60%">
+                                    <label for="bairro">Bairro</label>
+                                    <input type="text" class="form-control" value="" id="bairro" placeholder="Bairro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bairro">Cidade</label>
+                                    <input type="text" class="form-control" value="" id="cidade" placeholder="Cidade">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="Salvar()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ Confirma Exclusão Modal
+<div class="modal fade " id="ExclueModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ExclueModalTitle">Novo Cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <h5>Confirma exclusão?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-danger" onclick="DeleteClient()">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+        Salvar = () => {
+
+            let id = $("#clienteId").html();
+
+            if (id.length == 0) {
+                NovoCliente();
+            }
+            else {
+
+                var cliente = FormToData();
+
+                AlterarCliente(cliente)
+            }
+
+        }
+        NovoCliente = () => {
+
+            let nome = $("#nome").val();
+            let tipo = $("#tipo").val();
+            let contato = $("#contato").val();
+            let fone = $("#fone").val();
+            let rua = $("#rua").val();
+            let bairro = $("#bairro").val();
+            let cidade = $("#cidade").val();
+            if (nome.length < 1) {
+
+                alert("Pof favor informe Nome do Cliente");
+            }
+            else {
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: '/Cliente/NovoCliente',
+                    data: {
+                        "nome": nome,
+                        "tipo": tipo,
+                        "contato": contato,
+                        "fone": fone,
+                        "rua": rua,
+                        "bairro": bairro,
+                        "cidade": cidade
+                    },
+                    success: function (data) {
+
+                        window.setTimeout('location.reload()', 500);
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+
+            }
+
+    }
+
+       
+        GetClientById = (id, mdl) => {
+
+            if (id > 0) {
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: '/Cliente/GetById',
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        $("#clienteId").html(id);
+                        console.log(mdl);
+                        switch (mdl) {
+                            case "#ClienteModal":
+                                DataToForm(data);
+                                $(mdl).modal('show');
+                                break;
+
+                            case "#ExclueModal":
+                                $(mdl).modal('show');
+                                break;
+                            default:
+                                alert('erro');
+                        }
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('erro');
+                    }
+                });
+            }
+
+        }
+        AlterarCliente = (cliente) => {
+
+            if (cliente.Id > 0) {
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: '/Cliente/AlterarCliente',
+                    data: {
+                        "cliente": cliente,
+                    },
+                    success: function (data) {
+
+                        window.setTimeout('location.reload()', 500);
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+
+            }
+            else {
+                console.log('não achei');
+            }
+        }
+        DeleteClient = () => {
+            let id = $("#clienteId").html();
+            if (id > 0) {
+
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: '/Cliente/ExclueCliente',
+                    data: {
+                        "id": id
+                    },
+                    success: function (data) {
+                        window.setTimeout('location.reload()', 500);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('erro');
+                    }
+                });
+            }
+        }
+        DataToForm = (c) => {
+
+            $("#ClienteModalTitle").html("Alterar dados do Cliente");
+            $("#clienteId").html(c.Id);
+            $("#nome").val(c.NomeCliente);
+            $("#tipo").val(c.TipoCliente);
+            $("#contato").val(c.NomeContato);
+            $("#fone").val(c.TelefoneContato);
+            $("#rua").val(c.Logradouro);
+            $("#bairro").val(c.Bairro);
+            $("#cidade").val(c.Cidade);
+
+        }
+        FormToData = () => {
+            let cliente = {
+                Id: $("#clienteId").html(),
+                NomeCliente: $("#nome").val(),
+                TipoCliente: $("#tipo").val(),
+                NomeContato: $("#contato").val(),
+                TelefoneContato: $("#fone").val(),
+                Logradouro: $("#rua").val(),
+                Bairro: $("#bairro").val(),
+                Cidade: $("#cidade").val()
+            }
+            return cliente;
+        }
+
+
+    </script>

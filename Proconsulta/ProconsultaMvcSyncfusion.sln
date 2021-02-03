@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proconsulta", "Proconsulta.csproj", "{A3E2438F-D39F-424F-8C26-D8090908D927}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0C878E1A-76C0-471E-BA9A-A4D0116AFCA3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "..\Infra\Infra.csproj", "{48F3FE4C-E0CE-4A38-ABD0-5A7207147129}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "..\Shared\Shared.csproj", "{09ABB6CF-278C-4CD0-8276-C8FB46BB41D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "..\Core\Core.csproj", "{3D1394FD-EA42-483C-AE5A-DEDDA04D5AEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{0C009D73-8759-4E38-8D03-612664C70AA8}"
+	ProjectSection(SolutionItems) = preProject
+		CriaTAbelaClientes.sql = CriaTAbelaClientes.sql
+		PopulaTabelaClientes.sql = PopulaTabelaClientes.sql
+		ProcedureAtualizaCliente.sql = ProcedureAtualizaCliente.sql
+		ProcedureDeletaCliente.sql = ProcedureDeletaCliente.sql
+		ProcedureInsereCliente.sql = ProcedureInsereCliente.sql
+		ProcedureListaClientes.sql = ProcedureListaClientes.sql
+		Roteiro.txt = Roteiro.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3E2438F-D39F-424F-8C26-D8090908D927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E2438F-D39F-424F-8C26-D8090908D927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E2438F-D39F-424F-8C26-D8090908D927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E2438F-D39F-424F-8C26-D8090908D927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F3FE4C-E0CE-4A38-ABD0-5A7207147129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F3FE4C-E0CE-4A38-ABD0-5A7207147129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F3FE4C-E0CE-4A38-ABD0-5A7207147129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F3FE4C-E0CE-4A38-ABD0-5A7207147129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09ABB6CF-278C-4CD0-8276-C8FB46BB41D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09ABB6CF-278C-4CD0-8276-C8FB46BB41D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09ABB6CF-278C-4CD0-8276-C8FB46BB41D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09ABB6CF-278C-4CD0-8276-C8FB46BB41D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1394FD-EA42-483C-AE5A-DEDDA04D5AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1394FD-EA42-483C-AE5A-DEDDA04D5AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1394FD-EA42-483C-AE5A-DEDDA04D5AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1394FD-EA42-483C-AE5A-DEDDA04D5AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A3E2438F-D39F-424F-8C26-D8090908D927} = {0C878E1A-76C0-471E-BA9A-A4D0116AFCA3}
+		{48F3FE4C-E0CE-4A38-ABD0-5A7207147129} = {0C878E1A-76C0-471E-BA9A-A4D0116AFCA3}
+		{09ABB6CF-278C-4CD0-8276-C8FB46BB41D6} = {0C878E1A-76C0-471E-BA9A-A4D0116AFCA3}
+		{3D1394FD-EA42-483C-AE5A-DEDDA04D5AEB} = {0C878E1A-76C0-471E-BA9A-A4D0116AFCA3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {131253E1-8979-4BE8-979F-CF0ED7F10A86}
+	EndGlobalSection
+EndGlobal
