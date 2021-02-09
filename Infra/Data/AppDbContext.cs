@@ -7,6 +7,10 @@ namespace Infra.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Aso> Asos { get; set; }
+        public DbSet<Medico> Medico { get; set; }
+
 
     }
 }

@@ -10,6 +10,7 @@ namespace Core.Entities
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; } = DateTime.Now;
         public DateTime DataAtualizacao { get; set; } = DateTime.Now;
-        public bool Ativo { get; set; }
+        public int ModificadoPor { get; set; } = 0;
+        public bool Ativo { get; set; } = true;
     }
 }
